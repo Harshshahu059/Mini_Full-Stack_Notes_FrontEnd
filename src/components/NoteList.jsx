@@ -6,7 +6,7 @@ import NoteForm from "./NoteForm";
 import io from "socket.io-client";
 import toast from "react-hot-toast";
 
-const socket = io("http://localhost:5000"); // ⚡ backend URL
+const socket = io(import.meta.env.VITE_API_URL);
 
 export default function NotesList() {
   const dispatch = useDispatch();

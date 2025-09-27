@@ -10,8 +10,8 @@ export const store = configureStore({
   }
 })
 
-// Setup Socket.IO after store is created
-const socket = io(import.meta.env.VITE_API_URL?.replace('/api','') || 'http://localhost:5000')
+
+const socket = io(import.meta.env.VITE_API_Socket)
 
 socket.on('noteAdded', (note) => store.dispatch(noteAddedRealtime(note)));
 socket.on('noteUpdated', (note) => store.dispatch(noteUpdatedRealtime(note)));

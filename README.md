@@ -18,7 +18,7 @@ It provides a modern, responsive UI for user authentication and managing notes i
 
 ### 1️⃣ Clone the Repository
 
-git clone https://github.com/your-username/mini-notes-app.git
+git clone 👉  https://github.com/Harshshahu059/Mini_Full-Stack_Notes_FrontEnd.git
 cd mini-notes-app/frontend
 
 ### 2️⃣ Install Dependencies

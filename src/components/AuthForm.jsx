@@ -7,18 +7,18 @@ export default function AuthForm() {
   const [mode, setMode] = useState('login');
   const [form, setForm] = useState({ username: '', email: '', password: '' });
   const dispatch = useDispatch();
-  const {error}=useSelector((state)=>state.auth)
+  const { error, loading } = useSelector((state) => state.auth)
 
   const playSound = (type) => {
     const audio = new Audio(type === 'error' ? '/error.mp3' : '/success.mp3');
     audio.play();
   };
   useEffect(() => {
-  if (error) {
-    toast.error(error);
-    playSound("error");
-  }
-}, [error]);
+    if (error) {
+      toast.error(error);
+      playSound("error");
+    }
+  }, [error]);
 
 
   const submit = async (e) => {
@@ -36,16 +36,16 @@ export default function AuthForm() {
         setMode('login'); // switch to login after registration
       }
     } catch (err) {
-     if(error){
-       toast.error(error || 'Something went wrong!');
-      playSound('error');
-     }
+      if (error) {
+        toast.error(error || 'Something went wrong!');
+        playSound('error');
+      }
     }
   };
 
   return (
     <div className="w-full max-w-md mx-auto p-6 bg-gray-200 rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300">
-      
+
       <h2 className="text-2xl font-bold mb-6 text-gray-800 text-center">
         {mode === 'login' ? 'Login' : 'Register'}
       </h2>
@@ -78,11 +78,36 @@ export default function AuthForm() {
         />
 
         <div className="flex flex-col sm:flex-row items-center justify-between gap-2">
-          <button
+          {/* <button
             type="submit"
             className="w-full sm:w-auto px-6 py-2 bg-indigo-500 text-white font-semibold rounded-lg shadow hover:bg-indigo-600 transition"
           >
             {mode === 'login' ? 'Login' : 'Register'}
+          </button> */}
+          <button
+            type="submit"
+            disabled={loading}
+            className={`
+        relative w-full sm:w-auto px-6 py-2
+        font-semibold rounded-lg shadow-md
+        overflow-hidden transition-all duration-300
+        text-white
+        ${loading
+                ? "bg-indigo-400 cursor-wait"
+                : "bg-indigo-500 hover:bg-indigo-600 active:scale-95"
+              }
+      `}
+          >
+            {loading && (
+              <span
+                className="absolute inset-0 bg-gradient-to-r from-indigo-400 via-indigo-500 to-indigo-400 
+          animate-[shimmer_2s_infinite] bg-[length:200%_100%] opacity-60"
+              />
+            )}
+
+            <span className="relative z-10">
+              {loading ? "Processing..." : mode === "login" ? "Login" : "Register"}
+            </span>
           </button>
 
           <button

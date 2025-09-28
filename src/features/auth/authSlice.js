@@ -42,7 +42,8 @@ const initialState = {
   user: getStoredUser(),
   token: localStorage.getItem('token') || null,
   status: 'idle',
-  error:null
+  error:null,
+  loading:false
 }
 
 // Slice
@@ -65,10 +66,19 @@ const authSlice = createSlice({
         localStorage.setItem('token', action.payload.token);
         localStorage.setItem('user', JSON.stringify(action.payload.user));
         state.error=null
+        state.loading=false
       })
       .addCase(register.rejected, (state, action) => {
-        console.log(action.payload)
         state.error=action.payload
+        state.loading=false
+      })
+      .addCase(register.pending, (state, action) => {
+        state.error=action.payload
+        state.loading=true
+      })
+      .addCase(login.pending, (state, action) => {
+        state.error=action.payload
+        state.loading=true
       })
       .addCase(login.fulfilled, (state, action) => {
         state.user = action.payload.user;
@@ -76,10 +86,12 @@ const authSlice = createSlice({
         state.error=null
         localStorage.setItem('token', action.payload.token);
         localStorage.setItem('user', JSON.stringify(action.payload.user));
+        state.loading=false
       })
       .addCase(login.rejected, (state, action) => {
         console.log(action.payload)
         state.error=action.payload
+        state.loading=false
       })
   }
 })

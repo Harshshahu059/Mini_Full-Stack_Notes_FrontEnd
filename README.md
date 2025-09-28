@@ -1,16 +1,37 @@
-# React + Vite
+# 📝 Mini Notes App – Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the **frontend** of the Mini Notes App, built with **React + Vite + Tailwind CSS + Redux Toolkit**.  
+It provides a modern, responsive UI for user authentication and managing notes in real-time.  
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
+- 🔐 Login / Register with JWT authentication  
+- 📝 Add, view, edit, and delete notes  
+- ⚡ Real-time updates via **Socket.io**  
+- 🎨 Responsive UI with TailwindCSS  
+- 📦 State management with Redux Toolkit  
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## ⚡ Setup Instructions
 
-## Expanding the ESLint configuration
+### 1️⃣ Clone the Repository
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+git clone 👉  https://github.com/Harshshahu059/Mini_Full-Stack_Notes_FrontEnd.git
+cd mini-notes-app/frontend
+
+### 2️⃣ Install Dependencies
+npm install
+
+### 3️⃣ Configure API URL
+VITE_API_URL=http://localhost:5000/api
+VITE_SOCKET_URL=http://localhost:5000
+
+### 4️⃣ Run the App
+npm run dev
+
+The app will be available at:
+👉 https://harshmininotes.netlify.app/
+
+
